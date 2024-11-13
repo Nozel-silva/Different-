@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Cube with Eye Images</title>
+  <style>
+    /* Dark red background for the entire webpage */
+    body {
+      background-color: darkred;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Main container to center the 3D cube */
+    .container {
+      width: 70vw;
+      height: 70vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+      position: relative;
+    }
+
+    /* The 3D cube */
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: autoRotate 10s linear infinite;
+      transition: transform 0.5s ease;
+    }
+
+    /* Keyframes for continuous auto-rotation */
+    @keyframes autoRotate {
+      0% { transform: rotateX(0deg) rotateY(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    /* Each side of the cube */
+    .side {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backface-visibility: hidden;
+      cursor: pointer;
+      border: 2px solid white; /* White border for each cube side */
+      transition: transform 0.5s ease;
+    }
+
+    /* Cube face positioning */
+    .front  { transform: rotateY(0deg) translateZ(35vw); }
+    .back   { transform: rotateY(180deg) translateZ(35vw); }
+    .right  { transform: rotateY(90deg) translateZ(35vw); }
+    .left   { transform: rotateY(-90deg) translateZ(35vw); }
+    .top    { transform: rotateX(90deg) translateZ(35vw); }
+    .bottom { transform: rotateX(-90deg) translateZ(35vw); }
+
+    /* Image styling within cube sides */
+    .side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px; /* Optional rounded corners for style */
+    }
+
+    /* Split effect for cube faces */
+    .split .front  { transform: translateZ(35vw) translateY(-50vh) scale(0.7); }
+    .split .back   { transform: translateZ(35vw) translateY(50vh) scale(0.7); }
+    .split .right  { transform: translateZ(35vw) translateX(50vw) scale(0.7); }
+    .split .left   { transform: translateZ(35vw) translateX(-50vw) scale(0.7); }
+    .split .top    { transform: translateZ(35vw) translateY(-50vh) scale(0.7); }
+    .split .bottom { transform: translateZ(35vw) translateY(50vh) scale(0.7); }
+
+    /* Clothes section styling */
+    .clothes-section {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Image gallery styling */
+    .clothes-images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .clothes-images img {
+      width: 150px;
+      height: 150px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <!-- 3D Cube -->
+    <div class="cube" id="cube">
+      <div class="side front" onclick="splitCube()">
+        <img src="eye.jpg" alt="Front">
+      </div>
+      <div class="side back" onclick="splitCube()">
+        <img src="eye.jpg" alt="Back">
+      </div>
+      <div class="side right" onclick="splitCube()">
+        <img src="eye.jpg" alt="Right">
+      </div>
+      <div class="side left" onclick="splitCube()">
+        <img src="eye.jpg" alt="Left">
+      </div>
+      <div class="side top" onclick="splitCube()">
+        <img src="eye.jpg" alt="Top">
+      </div>
+      <div class="side bottom" onclick="splitCube()">
+        <img src="eye.jpg" alt="Bottom">
+      </div>
+    </div>
+  </div>
+
+  <!-- Clothes Section -->
+  <div class="clothes-section" id="clothesSection">
+    <h1>Clothes</h1>
+    <div class="clothes-images">
+      <img src="https://via.placeholder.com/150" alt="Clothing Item 1">
+      <img src="https://via.placeholder.com/150" alt="Clothing Item 2">
+      <img src="https://via.placeholder.com/150" alt="Clothing Item 3">
+      <img src="https://via.placeholder.com/150" alt="Clothing Item 4">
+      <img src="https://via.placeholder.com/150" alt="Clothing Item 5">
+      <img src="https://via.placeholder.com/150" alt="Clothing Item 6">
+    </div>
+  </div>
+
+  <script>
+    const cube = document.getElementById('cube');
+    const clothesSection = document.getElementById('clothesSection');
+
+    // Function to trigger the split animation
+    function splitCube() {
+      cube.classList.add('split');
+      setTimeout(showClothesSection, 500); // Wait for split animation to complete before showing clothes section
+    }
+
+    // Function to display clothes section
+    function showClothesSection() {
+      clothesSection.style.display = 'block';
+      document.querySelector('.container').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
