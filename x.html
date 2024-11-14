@@ -33,7 +33,13 @@
       align-items: center;
       perspective: 1000px;
     }
-
+/* Adjust size for desktop */
+    @media (min-width: 768px) {
+      .container {
+        width: 40vw;
+        height: 40vw;
+      }
+    }
     /* The 3D cube */
     .cube {
       width: 100%;
