@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3D Cube with Eye Images</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Basic reset */
     * {
@@ -15,13 +16,33 @@
     /* Dark background for the entire webpage */
     body {
       background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      flex-direction: column;
       overflow: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color:darkslategray;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: ;
+      align-items: ;
+      font-family: 'cursive', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
       color: white;
-      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      z-index: 10;
+      
     }
 
     /* Main container to center the 3D cube */
@@ -32,6 +53,7 @@
       justify-content: center;
       align-items: center;
       perspective: 1000px;
+      margin-top: 80px; /* Space for navbar */
     }
 
     /* The 3D cube */
@@ -43,6 +65,9 @@
       animation: autoRotate 10s linear infinite;
     }
 
+h1{
+    font-family:courier;
+}
     /* Keyframes for continuous auto-rotation */
     @keyframes autoRotate {
       0% { transform: rotateX(0deg) rotateY(0deg); }
@@ -146,9 +171,10 @@
 </head>
 <body>
 
-
-
-
+  <!-- Navbar -->
+  <div class="navbar">
+    Nami's Collection
+  </div>
 
   <div class="container" id="container">
     <!-- 3D Cube -->
@@ -176,7 +202,7 @@
 
   <!-- Clothes Section with Images and Explore Button -->
   <div class="clothes-section" id="clothesSection">
-    <h1>Nami's Collection</h1>
+    <h1>Gallery</h1>
     <div class="clothes-images">
       <div class="clothes-card">
         <img src="r.jpg" alt="Clothes Image 1">
@@ -202,6 +228,7 @@
         <img src="a.jpg" alt="Clothes Image 6">
         <div class="explore-btn">Explore</div>
       </div>
+
     </div>
   </div>
 
